@@ -2,16 +2,15 @@ import sys
 
 def read_file(filename):
 	f = open(filename,'rU')
-	line = f.readline()
+	line = f.readline().strip()
 	words = dict()
-	outf = open('output6.txt','w')
 	for word in line.split(' '):
 		if word in words:
 			words[word] += 1
 		else:
 			words[word] = 1
 	for key, value in words.items():
-		outf.write(key + ' ' + str(value) + '\n')
+		print(key + ' ' + str(value))
 
 def main():
 	read_file(sys.argv[1])
