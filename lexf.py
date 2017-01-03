@@ -1,7 +1,13 @@
 import sys
 import itertools
 
-def enum(alphabet,n):
+def combs(alphabet,n,res,acc=''):
+	if n == 0:
+		res.append(acc)
+	else:
+		for c in alphabet:
+			combs(alphabet,n-1,res,acc + c)
+	return res
 	
 
 def readFile(filename):
@@ -12,7 +18,10 @@ def readFile(filename):
 	line = inf.readline()
 	line = line.strip()
 	n = int(line)
-	enum(alphabet,n)
+	res = []
+	res = combs(alphabet,n,res)
+	for r in res:
+		print(r)
 
 def main():
 	readFile(sys.argv[1])
